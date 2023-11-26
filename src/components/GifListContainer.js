@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import GifList from './GifList';
+import GifSearch from './GifSearch';
 
 function GifListContainer() { 
 const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
@@ -18,7 +19,7 @@ const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
         }
 
         const data = await response.json();
-        setGifs(data);
+        setGifs(data.data.slice(0,3));
       } catch (error) {
         setError(error.message);
       } finally {
@@ -37,8 +38,11 @@ const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
     return <p>Error: {error}</p>;
   }
 
+  console.log(gifs)
+
   return (
     <div>
+        <GifSearch/>
         <GifList/>
     </div>
   )
