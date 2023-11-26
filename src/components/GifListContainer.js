@@ -8,6 +8,8 @@ const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
   const [gifs, setGifs]= useState([])
   const [loading, setLoading]= useState(true)
   const [error, setError]= useState(null)
+  const [searchTerm, setSearchTerm]= useState("")
+  const [filteredGifs, setFilteredGifs] = useState([]);
 
 
   useEffect(() => {
@@ -39,13 +41,22 @@ const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
   }
     console.log(gifs)
   function handleSubmit(searchTerm){
-    console.log ({searchTerm})
+    setSearchTerm(searchTerm)
+    const filteredGif= gifs.filter(gif=> {
+      return gif.title.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    setFilteredGifs(filteredGif)
   }
+  
 
   return (
     <div>
         <GifSearch formEvent= {handleSubmit}/>
-        <GifList gifs={gifs}/>
+        {searchTerm ? (
+        <GifList gifs={filteredGifs} />
+      ) : (
+        <GifList gifs={gifs} />
+      )}
     </div>
   )
 }

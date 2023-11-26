@@ -6,7 +6,7 @@ function GifSearch({formEvent}) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // Call the onSubmit function passed from the parent with the search term
+    // Call the formEvent function passed from the parent with the search term
     formEvent(searchTerm);
   };
   return (
