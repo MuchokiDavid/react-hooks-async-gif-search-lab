@@ -38,12 +38,10 @@ const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
     return <p>Error: {error}</p>;
   }
 
-  console.log(gifs)
-
   return (
     <div>
         <GifSearch/>
-        <GifList/>
+        <GifList gifs={gifs}/>
     </div>
   )
 }
