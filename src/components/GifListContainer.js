@@ -37,10 +37,14 @@ const apiKey= "KYeZAYMCZYbVBOz0rrNmgKGoSGoTpoOH";
   if (error) {
     return <p>Error: {error}</p>;
   }
+    console.log(gifs)
+  function handleSubmit(searchTerm){
+    console.log ({searchTerm})
+  }
 
   return (
     <div>
-        <GifSearch/>
+        <GifSearch formEvent= {handleSubmit}/>
         <GifList gifs={gifs}/>
     </div>
   )
